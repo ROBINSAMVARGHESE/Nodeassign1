@@ -3,6 +3,7 @@ const express = require('express');
 const router = express.Router();
 
 let products = [
+    
     { "id": 1, "car name": "Ram Van B250", "year": 1993, "manufacturer": "Dodge", "vin": "JN1AZ4EH9EM793379" },
     { "id": 2, "car name": "Caravan", "year": 2005, "manufacturer": "Dodge", "vin": "3VWKX7AJ3CM671357" },
     { "id": 3, "car name": "Grand Prix", "year": 1999, "manufacturer": "Pontiac", "vin": "2G4GL5EX0E9001943" },
@@ -34,7 +35,7 @@ router.get('/:id', (req, res) => {
 // Create a new product
 router.post('/', (req, res) => {
     const newProduct = {
-        id: products.length + 1, // Simple ID generation
+        id: products.length + 1, 
         "car name": req.body["car name"],
         year: req.body.year,
         manufacturer: req.body.manufacturer,
@@ -53,7 +54,7 @@ router.put('/:id', (req, res) => {
         if (productIndex !== -1) {
             // Update the product
             products[productIndex] = {
-                id: productId, // Maintain the same ID
+                id: productId, 
                 "car name": req.body["car name"],
                 year: req.body.year,
                 manufacturer: req.body.manufacturer,
@@ -64,10 +65,10 @@ router.put('/:id', (req, res) => {
             res.status(404).json({ message: "Product not found" });
         }
     } catch (error) {
-        console.error("Error updating product:", error); // Log the error
+        console.error("Error updating product:", error); 
         res.status(500).json({ message: "Internal Server Error", error: error.message });
     }
 });
 
-// Export the router
+
 module.exports = router;
